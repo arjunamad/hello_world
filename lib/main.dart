@@ -1,14 +1,10 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -24,8 +20,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -43,16 +37,23 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text('Hello I am Arjuna This is my demo')),
-        body: Column(children: <Widget>[Textinputwidget(), Text(this.text)]));
+        body: Column(children: <Widget>[
+          TextInputWiget(this.changeText),
+          Text(this.text)
+        ]));
   }
 }
 
-class Textinputwidget extends StatefulWidget {
+class TextInputWiget extends StatefulWidget {
+  final Function(String) callback;
+
+  TextInputWiget(this.callback);
+
   @override
-  _TextinputwidgetState createState() => _TextinputwidgetState();
+  _TextinputwigetState createState() => _TextinputwigetState();
 }
 
-class _TextinputwidgetState extends State<Textinputwidget> {
+class _TextinputwigetState extends State<TextInputWiget> {
   final controller = TextEditingController();
 
   @override
@@ -61,7 +62,10 @@ class _TextinputwidgetState extends State<Textinputwidget> {
     controller.dispose();
   }
 
-  void click() {}
+  void click() {
+    widget.callback(controller.text);
+    controller.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
