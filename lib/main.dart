@@ -1,7 +1,27 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
+}
+
+class post {
+  String body;
+  String author;
+  int likes = 0;
+  bool userLiked = false;
+
+  post(this.body, this.author);
+
+  void likedpost() {
+    this.userLiked = this.userLiked;
+    if (this.userLiked) {
+      this.likes += 1;
+    } else {
+      this.likes -= 1;
+    }
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -25,11 +45,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String text = "";
+  List<post> posts = [];
 
-  void changeText(String test) {
+  void newPost(String text) {
     this.setState(() {
-      this.text = text;
+      posts.add(new post(text, "Arjuna"));
     });
   }
 
@@ -38,8 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(title: Text('Hello I am Arjuna This is my demo')),
         body: Column(children: <Widget>[
-          TextInputWiget(this.changeText),
-          Text(this.text)
+          Expanded(child: PostList(this.posts)),
+          Expanded(child: TextInputWiget(this.newPost)),
         ]));
   }
 }
@@ -73,12 +93,49 @@ class _TextinputwigetState extends State<TextInputWiget> {
         controller: this.controller,
         decoration: InputDecoration(
             prefixIcon: Icon(Icons.message),
-            labelText: "please enter your name and press the button:",
+            labelText: "please enter your Comment and press the button:",
             suffixIcon: IconButton(
               icon: Icon(Icons.send),
               splashColor: Colors.blue,
-              tooltip: "your name saved",
+              tooltip: "click to save",
               onPressed: this.click,
             )));
+  }
+}
+
+class PostList extends StatefulWidget {
+  final List<post> listItems;
+
+  PostList(this.listItems);
+
+  @override
+  _PostListState createState() => _PostListState();
+}
+
+class _PostListState extends State<PostList> {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: this.widget.listItems.length,
+      itemBuilder: (context, index) {
+        var post = this.widget.listItems[index];
+        return Card(
+            child: Row(children: <Widget>[
+          Expanded(
+              child: ListTile(
+            title: Text(post.body),
+            subtitle: Text(post.author),
+          )),
+          Row(
+            children: <Widget>[
+              IconButton(
+                icon: Icon(Icons.thumb_up),
+                onPressed: post.likedpost,
+              )
+            ],
+          )
+        ]));
+      },
+    );
   }
 }
