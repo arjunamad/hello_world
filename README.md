@@ -18,6 +18,7 @@ instructions to use
 (snapshots of the demo in the screenshot folder)
 
 thank you=======================
+(note- my emulator is not working properly because of the issue in my bios. I took screenshots running on chrome browser)
 
 
 ================================================================================================================================================
