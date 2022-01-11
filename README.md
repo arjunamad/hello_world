@@ -1,19 +1,19 @@
 this is a quick overview of the demo
 
-1.simple app to enter user comments and like or dislike others comments.user need to enter their comment and press the button user can navigate to comment detail page.
-2.it will popup a message to user friendly.after pressing the button it will flash in blue.
-3.user can see others comments and.it will diplay in red colour which comment user has liked.
-4.when user press the button it will display a confirmation alert.
-5.using dispose methode it will clear and change the displaing text according to actual textfield does.
+1. simple app to enter user comments and like or dislike others' comments. Users need to enter their comments and press the button user can navigate to the comment detail page.
+2. it will popup a message to user friendly. after pressing the button it will flash in blue.
+3. user can see others' comments and.it will display in red color which comment the user has liked.
+4. when the user presses the button it will display a confirmation alert.
+5. using dispose() method it will clear and change the displaying text according to what the actual textfield does.
 6.setatate() method will reset the display.
 
-intructions to use
-1.type your comment and press the button.
-2.it will display a popup message in the text fiels as well as the button
-3.after that you will see the list of comments.
-4.you can see others comments also
-5.you can like the others comments as well
-6.if you like others comments the thump up will display in red collour
+instructions to use
+1. type your comment and press the button.
+2. it will display a popup message in the text field as well as the button
+3. after that you will see the list of comments.
+4. you can see others comments also
+5. you can like the others comments as well
+6. if you like others comments the thump up will display in red color
 
 (snapshots of the demo in the screenshot folder)
 
