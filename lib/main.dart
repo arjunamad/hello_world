@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Arjuna Demo',
       theme: ThemeData(
-        primarySwatch: Colors.yellow,
+        primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(),
@@ -113,6 +113,12 @@ class PostList extends StatefulWidget {
 }
 
 class _PostListState extends State<PostList> {
+  void like(Function callBack) {
+    this.setState(() {
+      callBack();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -128,10 +134,17 @@ class _PostListState extends State<PostList> {
           )),
           Row(
             children: <Widget>[
+              Container(
+                child: Text(
+                  post.likes.toString(),
+                  style: TextStyle(fontSize: 20),
+                ),
+                padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+              ),
               IconButton(
-                icon: Icon(Icons.thumb_up),
-                onPressed: post.likedpost,
-              )
+                  icon: Icon(Icons.thumb_up),
+                  onPressed: () => this.like(post.likedpost),
+                  color: post.userLiked ? Colors.red : Colors.black)
             ],
           )
         ]));
