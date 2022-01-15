@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(title: Text('Hello I am Arjuna This is my demo')),
         body: Column(children: <Widget>[
           Expanded(child: PostList(this.posts)),
-          Expanded(child: TextInputWiget(this.newPost)),
+          TextInputWiget(this.newPost),
         ]));
   }
 }
@@ -85,6 +85,7 @@ class _TextinputwigetState extends State<TextInputWiget> {
   void click() {
     widget.callback(controller.text);
     controller.clear();
+    FocusScope.of(context).unfocus();
   }
 
   @override
